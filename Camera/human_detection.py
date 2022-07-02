@@ -19,7 +19,7 @@ def detect(frame):
     
     cv2.putText(frame, 'Status : Detecting ', (40,40), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,0,0), 2)
     cv2.putText(frame, f'Total Persons : {person-1}', (40,70), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,0,0), 2)
-    cv2.imshow('output', frame)
+    #cv2.imshow('output', frame)
     
     print("Number of person: "+ str(counter))
     return frame
@@ -48,6 +48,7 @@ def detectByPathImage(path, output_path):
     result_image = detect(image)
     if output_path is not None:
         cv2.imwrite(output_path, result_image)
+    cv2.imwrite('test_image_result.jpg',result_image)
     cv2.waitKey(2000)
     
     cv2.destroyAllWindows()

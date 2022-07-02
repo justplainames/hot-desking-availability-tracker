@@ -3,13 +3,17 @@ import imutils
 import numpy as np
 import argparse
 import time
+import hive_mqtt
+
 
 HOGCV = cv2.HOGDescriptor()
 HOGCV.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
+counter = 0
+
 def detect(frame):
     bounding_box_cordinates, weights =  HOGCV.detectMultiScale(frame, winStride = (4, 4), padding = (8, 8), scale = 1.03)
-    counter = 0
+    global counter 
     person = 1
     for x,y,w,h in bounding_box_cordinates:
         cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
@@ -21,8 +25,13 @@ def detect(frame):
     cv2.putText(frame, f'Total Persons : {person-1}', (40,70), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255,0,0), 2)
     #cv2.imshow('output', frame)
     
-    print("Number of person: "+ str(counter))
+    
+    
+    
     return frame
+
+
+
 
 def humanDetector(args):
     image_path = args["image"]
@@ -39,7 +48,7 @@ def humanDetector(args):
         print('[INFO] Opening Video from path.')
         detectByPathVideo(video_path, writer)
     elif image_path is not None:
-        print('[INFO] Opening Image from path.')
+        #print('[INFO] Opening Image from path.')
         detectByPathImage(image_path, args['output'])
 
 def detectByPathImage(path, output_path):
@@ -48,6 +57,7 @@ def detectByPathImage(path, output_path):
     result_image = detect(image)
     if output_path is not None:
         cv2.imwrite(output_path, result_image)
+        
     cv2.imwrite('test_image_result.jpg',result_image)
     cv2.waitKey(2000)
     
@@ -91,6 +101,9 @@ def detectByCamera(output_path,writer):
     video.release()
     cv2.destroyAllWindows()
 
+
+
+
 def argsParser():
     arg_parse = argparse.ArgumentParser()
     arg_parse.add_argument("-v", "--video", default=None, help="path to Video File ")
@@ -105,4 +118,7 @@ if __name__ == "__main__":
     HOGCV.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
     args = argsParser()
     humanDetector(args)
+    print(counter)
+    hive_mqtt.pub(counter)
+    
     

@@ -16,11 +16,15 @@ app.config['UPLOAD_FOLDER'] = camera_images
 
 @app.route('/')
 def home():
+    # selected_image_1 =
+
     image_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image2.jpg')
+    image_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image3.jpg')
+
     seat_1 = 0
     seat_2 = 1
 
-    return render_template('home.html', user_image=image_1, seat_1=seat_1, seat_2=seat_2)
+    return render_template('home.html', image_1=image_1, image_2=image_2, seat_1=seat_1, seat_2=seat_2)
 
 
 if __name__ == '__main__':

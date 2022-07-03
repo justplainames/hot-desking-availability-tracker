@@ -156,11 +156,11 @@ ul li a:hover .name span:before
 /*  background-position: center center;*/
 /*}*/
 
-.jumbotron#image_2{
-  background-size: cover;
-  background-image: url("../images/loading.jpg");
-  background-position: center center;
-}
+/*.jumbotron#image_2{*/
+/*  background-size: cover;*/
+/*  background-image: url("../images/loading.jpg");*/
+/*  background-position: center center;*/
+/*}*/
 
 
 .container{

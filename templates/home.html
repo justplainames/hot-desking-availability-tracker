@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block title %}Cloud System{% endblock %}
+{% block content %}
+<!--<div class="jumbotron jumbotron-fluid">-->
+<!--  <div class="container text-center text-dark">-->
+<!--      <h1 class="display-2">Image 1</h1>-->
+<!--      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--    <h1 class="display-2">Image 2</h1>-->
+
+<!--</div>-->
+
+<div class="row mx-auto">
+    <div class="container">
+        <div class="jumbotron text-center cover-image" id="image_1">
+            <style>
+                .jumbotron#image_1{
+                background-size: cover;
+                /*background-image: url('../static/images/loading.jpg');*/
+                background-image: url('../static/images/loading.jpg');
+                background-position: center center;
+            }
+
+            </style>
+            <h1>Table 1 Image</h1>
+<!--            <img src="{{user_image}}" class="img-responsive center-block">-->
+        </div>
+
+        <div class="jumbotron text-center" id="image_2">
+            <h1>Table 2 Image</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row mx-auto">
+    <div class="container">
+        <div class="jumbotron text-center col-md-6" id="info_1">
+            <h1>Table 1 Information</h1>
+            {% if seat_1 > 0 %}
+                <div class="alert alert-danger">
+                    <strong>Occupied</strong>
+                </div>
+                <h2>{{seat_1}}</h2>
+            {% endif %}
+            {% if seat_1 == 0 %}
+                <div class="alert alert-success">
+                    <strong>Vacant</strong>
+                </div>
+                <h2>{{seat_1}}</h2>
+            {% endif %}
+        </div>
+
+        <div class="jumbotron text-center col-md-6" id="info_2">
+            <h1>Table 2 Information</h1>
+            {% if seat_2 > 0 %}
+                <div class="alert alert-danger">
+                    <strong>Occupied</strong>
+                </div>
+                <h2>{{seat_2}}</h2>
+            {% endif %}
+            {% if seat_2 == 0 %}
+                <div class="alert alert-success">
+                    <strong>Vacant</strong>
+                </div>
+                <h2>{{seat_2}}</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!--<img src="{{user_image}}" class="img-responsive center-block">-->
+{% endblock %}

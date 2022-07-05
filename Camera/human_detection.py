@@ -120,5 +120,3 @@ if __name__ == "__main__":
     humanDetector(args)
     print(counter)
     hive_mqtt.pub(counter)
-    
-    

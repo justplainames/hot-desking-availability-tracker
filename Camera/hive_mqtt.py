@@ -5,6 +5,7 @@ import json
 import ssl
 
 def pub(counter):
+
 	def on_publish(client, userdata, mid):
 		print("mid: "+str(mid))
 	
@@ -24,12 +25,15 @@ def pub(counter):
 	client.connect(awshost, awsport, keepalive=60)    
 	client.loop_start()
 	
+	
+	
+
 	time_stamp = datetime.now()
 	paylodmsg0="{"
 	paylodmsg1 = "\"time_stamp\": \""
 	paylodmsg2 = "\", \"number_of_People\":"
 	paylodmsg3="}"
-	paylodmsg = "{} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, time_stamp, paylodmsg2, counter, paylodmsg3)
+	paylodmsg = "{} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, time_stamp, paylodmsg2, counter, paylodmsg3)	
 	paylodmsg = json.dumps(paylodmsg) 
 	paylodmsg_json = json.loads(paylodmsg)
 	client.publish("school/area1", paylodmsg_json, qos=1)

@@ -19,7 +19,6 @@ fig2 = m.plot_components(forecast)
 fig1.savefig('Forecasting/test3.png')
 fig2.savefig('Forecasting/test2.png')
 
-
 plot_plotly(m, forecast)
 plot_components_plotly(m, forecast)
 

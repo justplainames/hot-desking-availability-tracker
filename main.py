@@ -24,7 +24,7 @@ def home():
     seat_2 = 5
 
     if request.method == 'POST':
-        if request.form['btnForecast1'] == 'Generate 1':
+        if request.form['btnForecast'] == 'Generate':
             print("FORM 1")
 
     return render_template('home.html', image_1=image_1, image_2=image_2, seat_1=seat_1, seat_2=seat_2,

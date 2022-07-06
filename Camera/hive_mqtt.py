@@ -16,9 +16,9 @@ def pub(counter):
 	awsport = 8883                                              # Port no.   
 	clientId = "fahmanpi"                                     # Thing_Name
 	thingName = "fahmanpi"                                    # Thing_Name
-	caPath = "/home/pi/certs/AmazonRootCA1.pem"                                      # Root_CA_Certificate_Name
-	certPath = "/home/pi/certs/certificate.pem.crt"                            # <Thing_Name>.cert.pem
-	keyPath = "/home/pi/certs/private.pem.key"                          # <Thing_Name>.private.key
+	caPath = "AmazonRootCA1.pem"                                      # Root_CA_Certificate_Name
+	certPath = "certificate.pem.crt"                            # <Thing_Name>.cert.pem
+	keyPath = "private.pem.key"                          # <Thing_Name>.private.key
 	
 	client.tls_set(caPath, certfile=certPath, keyfile=keyPath, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)  # pass parameters
 	

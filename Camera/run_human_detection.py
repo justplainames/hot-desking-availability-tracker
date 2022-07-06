@@ -17,4 +17,4 @@ def run_human_detection():
     
 while(True):
     run_human_detection()
-    time.sleep(30)
+    time.sleep(20)

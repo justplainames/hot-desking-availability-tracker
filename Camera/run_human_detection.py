@@ -15,5 +15,6 @@ def run_human_detection():
     os.system(command_string)
     time.sleep(2)
     
-
-run_human_detection()
+while(True):
+    run_human_detection()
+    time.sleep(20)

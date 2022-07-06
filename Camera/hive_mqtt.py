@@ -16,9 +16,9 @@ def pub(counter):
 	awsport = 8883                                              # Port no.   
 	clientId = "fahmanpi"                                     # Thing_Name
 	thingName = "fahmanpi"                                    # Thing_Name
-	caPath = "/home/pi/certs/AmazonRootCA1.pem"                                      # Root_CA_Certificate_Name
-	certPath = "/home/pi/certs/certificate.pem.crt"                            # <Thing_Name>.cert.pem
-	keyPath = "/home/pi/certs/private.pem.key"                          # <Thing_Name>.private.key
+	caPath = "AmazonRootCA1.pem"                                      # Root_CA_Certificate_Name
+	certPath = "certificate.pem.crt"                            # <Thing_Name>.cert.pem
+	keyPath = "private.pem.key"                          # <Thing_Name>.private.key
 	
 	client.tls_set(caPath, certfile=certPath, keyfile=keyPath, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)  # pass parameters
 	
@@ -27,13 +27,14 @@ def pub(counter):
 	
 	
 	
-
+	device_name = "fahmanpi"
 	time_stamp = datetime.now()
 	paylodmsg0="{"
-	paylodmsg1 = "\"time_stamp\": \""
-	paylodmsg2 = "\", \"number_of_People\":"
-	paylodmsg3="}"
-	paylodmsg = "{} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, time_stamp, paylodmsg2, counter, paylodmsg3)	
+	paylodmsg1="\"device_name\" : \""
+	paylodmsg2 = "\",\"time_stamp\": \""
+	paylodmsg3 = "\", \"number_of_People\":"
+	paylodmsg4="}"
+	paylodmsg = "{} {} {} {} {} {} {} {}".format(paylodmsg0, paylodmsg1,device_name, paylodmsg2,time_stamp, paylodmsg3,counter,paylodmsg4)	
 	paylodmsg = json.dumps(paylodmsg) 
 	paylodmsg_json = json.loads(paylodmsg)
 	client.publish("school/area1", paylodmsg_json, qos=1)

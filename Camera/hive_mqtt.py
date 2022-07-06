@@ -27,13 +27,14 @@ def pub(counter):
 	
 	
 	
-
+	device_name = "fahmanpi"
 	time_stamp = datetime.now()
 	paylodmsg0="{"
-	paylodmsg1 = "\"time_stamp\": \""
-	paylodmsg2 = "\", \"number_of_People\":"
-	paylodmsg3="}"
-	paylodmsg = "{} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, time_stamp, paylodmsg2, counter, paylodmsg3)	
+	paylodmsg1="\"device_name\" : \""
+	paylodmsg2 = "\",\"time_stamp\": \""
+	paylodmsg3 = "\", \"number_of_People\":"
+	paylodmsg4="}"
+	paylodmsg = "{} {} {} {} {} {} {} {}".format(paylodmsg0, paylodmsg1,device_name, paylodmsg2,time_stamp, paylodmsg3,counter,paylodmsg4)	
 	paylodmsg = json.dumps(paylodmsg) 
 	paylodmsg_json = json.loads(paylodmsg)
 	client.publish("school/area1", paylodmsg_json, qos=1)

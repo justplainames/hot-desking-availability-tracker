@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, flash, redirect, url_for, session
 import os
 import aws_controller
+import forecast
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -17,14 +18,17 @@ def home():
     image_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image2.jpg')
     image_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image3.jpg')
 
-    forecast_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'test1.png')
-    forecast_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'test2.png')
+    forecast_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'Forecast_1.png')
+    forecast_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'Forecast_2.png')
+
+    print(image_1)
 
     seat_1 = int(aws_controller.get_latest_update())
     seat_2 = 5
 
     if request.method == 'POST':
         if request.form['btnForecast'] == 'Generate':
+            #forecast.generate_forecast()
             print("FORM 1")
 
     return render_template('home.html', image_1=image_1, image_2=image_2, seat_1=seat_1, seat_2=seat_2,

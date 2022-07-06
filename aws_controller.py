@@ -5,7 +5,7 @@ dynamo_client = boto3.client('dynamodb', region_name='us-west-2')
 
 def get_items():
     return dynamo_client.scan(
-        TableName='CSC3004'
+        TableName='CSC3004_Table'
     )
 
 def get_latest_update():

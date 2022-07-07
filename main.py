@@ -28,7 +28,7 @@ def home():
 
     if request.method == 'POST':
         if request.form['btnForecast'] == 'Generate':
-            #forecast.generate_forecast()
+            forecast.generate_forecast()
             print("FORM 1")
 
     return render_template('home.html', image_1=image_1, image_2=image_2, seat_1=seat_1, seat_2=seat_2,

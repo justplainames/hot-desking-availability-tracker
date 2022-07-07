@@ -8,7 +8,7 @@ app.secret_key = "super secret key"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
-camera_images = os.path.join('static', 'images')
+camera_images = os.path.join('static/', 'images/')
 
 app.config['UPLOAD_FOLDER'] = camera_images
 

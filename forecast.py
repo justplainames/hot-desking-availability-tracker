@@ -7,6 +7,7 @@ import aws_controller
 def generate_forecast():
     df = pd.DataFrame(json.loads(aws_controller.get_items()['Items']))
     print(df.head())
+    
     #Reformatting data
     df.drop(['ts', 'device_name'], axis=1, inplace=True)
     print(df.head())
@@ -21,18 +22,14 @@ def generate_forecast():
     future = m.make_future_dataframe(periods=30)
     future['cap'] = 5
     future['floor'] = 0
-    #future.tail()
+
     forecast = m.predict(future)
     forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
-    # print(forecast)
+
     # Renaming Graph
     fig1 = m.plot(forecast)
     plt.ylabel('Crowd')
     plt.xlabel('Date Time')
     fig2 = m.plot_components(forecast)
-    plt.ylabel('Crowd')
-    plt.xlabel('Date Time')
     fig1.savefig('static/images/Forecast_1.png')
     fig2.savefig('static/images/Forecast_2.png')
-
-#generate_forecast()

@@ -23,8 +23,8 @@ def home():
 
     print(image_1)
 
-    seat_1 = int(aws_controller.get_latest_update())
-    seat_2 = 5
+    seat_1 = int(aws_controller.get_latest_update_1())
+    seat_2 = int(aws_controller.get_latest_update_2())
 
     if request.method == 'POST':
         if request.form['btnForecast'] == 'Generate':

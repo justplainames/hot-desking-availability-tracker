@@ -2,33 +2,6 @@
 {% block content %}
 <div class="row mx-auto">
     <div class="container">
-        <div class="jumbotron text-center cover-image" id="image_1">
-            <style>
-                .jumbotron#image_1{
-                background-size: cover;
-                background-image: url("{{ image_1 }}");
-                background-position: center center;
-            }
-
-            </style>
-            <h1>Table 1 Image</h1>
-        </div>
-
-        <div class="jumbotron text-center" id="image_2">
-            <h1>Table 2 Image</h1>
-            <style>
-                .jumbotron#image_2{
-                background-size: cover;
-                background-image: url("{{ image_2 }}");
-                background-position: center center;
-            }
-            </style>
-        </div>
-    </div>
-</div>
-
-<div class="row mx-auto">
-    <div class="container">
         <div class="jumbotron text-center col-md-6" id="info_1">
             <h1>Table 1 Information</h1>
             {% if seat_1 > 0 %}

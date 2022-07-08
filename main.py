@@ -15,13 +15,8 @@ app.config['UPLOAD_FOLDER'] = camera_images
 
 @app.route('/', methods=["POST", "GET"])
 def home():
-    image_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image2.jpg')
-    image_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'test_image3.jpg')
-
     forecast_1 = os.path.join(app.config['UPLOAD_FOLDER'], 'Forecast_1.png')
     forecast_2 = os.path.join(app.config['UPLOAD_FOLDER'], 'Forecast_2.png')
-
-    print(image_1)
 
     seat_1 = int(aws_controller.get_latest_update_1())
     seat_2 = int(aws_controller.get_latest_update_2())
@@ -31,7 +26,7 @@ def home():
             forecast.generate_forecast()
             print("FORM 1")
 
-    return render_template('home.html', image_1=image_1, image_2=image_2, seat_1=seat_1, seat_2=seat_2,
+    return render_template('home.html', seat_1=seat_1, seat_2=seat_2,
                            forecast_1=forecast_1, forecast_2=forecast_2)
 
 
